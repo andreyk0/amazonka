@@ -35,6 +35,8 @@
 --
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.SecretsManager.ListSecretVersionIds
     (
     -- * Creating a Request
@@ -58,6 +60,7 @@ module Network.AWS.SecretsManager.ListSecretVersionIds
     ) where
 
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -111,6 +114,13 @@ lsviMaxResults = lens _lsviMaxResults (\ s a -> s{_lsviMaxResults = a}) . mappin
 -- | The identifier for the secret containing the versions you want to list. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
 lsviSecretId :: Lens' ListSecretVersionIds Text
 lsviSecretId = lens _lsviSecretId (\ s a -> s{_lsviSecretId = a})
+
+instance AWSPager ListSecretVersionIds where
+        page rq rs
+          | stop (rs ^. lsvirsNextToken) = Nothing
+          | stop (rs ^. lsvirsVersions) = Nothing
+          | otherwise =
+            Just $ rq & lsviNextToken .~ rs ^. lsvirsNextToken
 
 instance AWSRequest ListSecretVersionIds where
         type Rs ListSecretVersionIds =

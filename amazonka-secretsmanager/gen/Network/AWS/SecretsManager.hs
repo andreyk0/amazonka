@@ -84,7 +84,7 @@ module Network.AWS.SecretsManager
     -- ** DeleteSecret
     , module Network.AWS.SecretsManager.DeleteSecret
 
-    -- ** ListSecrets
+    -- ** ListSecrets (Paginated)
     , module Network.AWS.SecretsManager.ListSecrets
 
     -- ** UpdateSecret
@@ -114,7 +114,7 @@ module Network.AWS.SecretsManager
     -- ** GetRandomPassword
     , module Network.AWS.SecretsManager.GetRandomPassword
 
-    -- ** ListSecretVersionIds
+    -- ** ListSecretVersionIds (Paginated)
     , module Network.AWS.SecretsManager.ListSecretVersionIds
 
     -- ** TagResource
